@@ -1,0 +1,18 @@
+.SearchBarContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Logo {
+    height: 10vh;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.InputSearch {
+    width: 50vw;
+    height: 6vh;
+    border-radius: 50% !important;
+}

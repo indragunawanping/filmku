@@ -1,0 +1,9 @@
+.ErrorModal{
+    border-radius: 12px !important;
+}
+
+.Header{
+    border-radius: 10px 10px 0 0  !important;
+    background: #DB2828 !important;
+    color: white !important;
+}

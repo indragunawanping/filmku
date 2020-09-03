@@ -1,0 +1,44 @@
+import React, { FormEvent, useState } from 'react';
+import SearchBar from "../Components/SearchBar";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { fetchMovieList } from "../actionsMovie";
+
+const SearchBarContainer = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const [query, setQuery] = useState("");
+
+  const handleLogoClick = () => {
+    history.push('/');
+  };
+
+  const successfulRedirection = () => {
+    history.push('/movie-list/'.concat(query).concat('/').concat(String(1)));
+  };
+
+  const handleSearchInputChange = (event: FormEvent<HTMLInputElement>) => {
+    setQuery(event.currentTarget.value);
+  };
+
+  const handleEnterKeyDown = (event: any) => {
+    if (event.key === 'Enter') {
+      dispatch(fetchMovieList(query, String(1), successfulRedirection));
+    }
+  };
+
+  const handleButtonSearchClick = () => {
+    dispatch(fetchMovieList(query, String(1), successfulRedirection));
+  };
+
+  return (
+    <SearchBar query={query}
+               handleLogoClick={handleLogoClick}
+               handleSearchInputChange={handleSearchInputChange}
+               handleEnterKeyDown={handleEnterKeyDown}
+               handleButtonSearchClick={handleButtonSearchClick}/>
+  )
+};
+
+export default SearchBarContainer;
