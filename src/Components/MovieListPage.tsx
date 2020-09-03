@@ -2,8 +2,9 @@ import React, { FormEvent } from 'react';
 import styles from './MovieListPage.module.css';
 import { Movie } from "../state";
 import posterNotAvailable from '../Assets/poster-not-available.webp';
-import { Grid, Loader, Pagination } from "semantic-ui-react";
+import { Grid, Input, Loader, Pagination } from "semantic-ui-react";
 import SearchBarContainer from "../Containers/SearchBarContainer";
+import Button from "semantic-ui-react/dist/commonjs/elements/Button";
 
 interface MovieListPageProps {
   query: string;
@@ -12,11 +13,15 @@ interface MovieListPageProps {
   currentPage: number;
   totalPage: number;
   isFetchingMovieList: boolean;
+  desiredPageNumber: number;
+  isWarningVisible: boolean;
   handleSearchInputChange: (event: FormEvent<HTMLInputElement>) => void;
   handleEnterKeyDown: any;
-  handleButtonSearchClick: () => void;
   handleDetailButtonClick: (imdbId: string) => void;
   handlePageChange: (event: React.MouseEvent<HTMLAnchorElement>, data: object) => void;
+  handlePageNumberInputChange: (event: FormEvent<HTMLInputElement>) => void;
+  handlePageNumberEnterKeyDown: any;
+  handleButtonGoClick: () => void;
 }
 
 const MovieListPage: React.FC<MovieListPageProps> = (props: MovieListPageProps) => {
@@ -86,6 +91,15 @@ const MovieListPage: React.FC<MovieListPageProps> = (props: MovieListPageProps) 
                 {renderMovieList()}
               </Grid.Row>
             </Grid>
+            <Input className={styles.InputSearch} type='text' placeholder='Page number...' action>
+              <input type="number" min="1"
+                     onChange={props.handlePageNumberInputChange}
+                     onKeyDown={props.handlePageNumberEnterKeyDown}
+                     value={props.desiredPageNumber}
+              />
+              <Button type='submit' icon onClick={props.handleButtonGoClick}>Go</Button>
+            </Input>
+            <span className={styles.Warning} style={{ visibility: props.isWarningVisible ? "visible" : "hidden" }}>Please input page number in range only.</span>
             <div className={styles.Pagination}>
               <Pagination pointing
                           secondary

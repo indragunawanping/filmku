@@ -3,12 +3,26 @@ import SearchBar from "../Components/SearchBar";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { fetchMovieList } from "../actionsMovie";
+import { DropdownProps } from "semantic-ui-react";
 
 const SearchBarContainer = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [query, setQuery] = useState("");
+  const [year, setYear] = useState<number | undefined>(undefined);
+
+  let yearRange: any[] = [];
+
+  for (let year = 1895; year <= 2020; year++) {
+    yearRange.push(
+      {
+        key: year,
+        text: year,
+        value: year
+      }
+    )
+  }
 
   const handleLogoClick = () => {
     history.push('/');
@@ -24,20 +38,28 @@ const SearchBarContainer = () => {
 
   const handleEnterKeyDown = (event: any) => {
     if (event.key === 'Enter') {
-      dispatch(fetchMovieList(query, String(1), successfulRedirection));
+      dispatch(fetchMovieList(query, String(1), successfulRedirection, year));
     }
   };
 
   const handleButtonSearchClick = () => {
-    dispatch(fetchMovieList(query, String(1), successfulRedirection));
+    dispatch(fetchMovieList(query, String(1), successfulRedirection, year));
+  };
+
+  const handleYearPickChange = (event: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => {
+    const year = String(data.value);
+    setYear(Number(year));
   };
 
   return (
     <SearchBar query={query}
+               yearRange={yearRange}
                handleLogoClick={handleLogoClick}
                handleSearchInputChange={handleSearchInputChange}
                handleEnterKeyDown={handleEnterKeyDown}
-               handleButtonSearchClick={handleButtonSearchClick}/>
+               handleButtonSearchClick={handleButtonSearchClick}
+               handleYearPickChange={handleYearPickChange}
+    />
   )
 };
 

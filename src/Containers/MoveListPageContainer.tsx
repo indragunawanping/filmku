@@ -32,11 +32,15 @@ const MovieListPageContainer: React.FC<MovieListPageContainerProps> = (props: Mo
   const totalPage = Math.floor(props.currentTotalResults / 10);
 
   const [query, setQuery] = useState("");
+  const [desiredPageNumber, setDesiredPageNumber] = useState(1);
+  const [isWarningVisible, setIsWarningVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     dispatch(fetchMovieList(searchQuery, pageNumber));
     setCurrentPage(currentPage);
+    setDesiredPageNumber(currentPage);
+    setIsWarningVisible(false);
   }, [dispatch, searchQuery, pageNumber]);
 
   const successfulRedirection = () => {
@@ -46,6 +50,7 @@ const MovieListPageContainer: React.FC<MovieListPageContainerProps> = (props: Mo
   const successfulChangePageRedirection = (activePage: number) => {
     history.push('/movie-list/'.concat(searchQuery).concat('/').concat(String(activePage)));
     setCurrentPage(activePage);
+    setDesiredPageNumber(activePage);
   };
 
   const handleSearchInputChange = (event: FormEvent<HTMLInputElement>) => {
@@ -56,10 +61,6 @@ const MovieListPageContainer: React.FC<MovieListPageContainerProps> = (props: Mo
     if (event.key === 'Enter') {
       dispatch(fetchMovieList(query, String(currentPage), successfulRedirection));
     }
-  };
-
-  const handleButtonSearchClick = () => {
-    dispatch(fetchMovieList(query, String(currentPage), successfulRedirection));
   };
 
   const handleDetailButtonClick = (imdbId: string) => {
@@ -75,6 +76,30 @@ const MovieListPageContainer: React.FC<MovieListPageContainerProps> = (props: Mo
     dispatch(fetchMovieList(searchQuery, String(data.activePage), successfulChangePageRedirection(data.activePage)));
   };
 
+  const handlePageNumberInputChange = (event: FormEvent<HTMLInputElement>) => {
+    setDesiredPageNumber(parseInt(event.currentTarget.value));
+  };
+
+  const handlePageNumberEnterKeyDown = (event: any) => {
+    if (event.key === 'Enter') {
+      if (desiredPageNumber < 1 || desiredPageNumber > totalPage) {
+        setIsWarningVisible(true)
+      } else {
+        // @ts-ignore
+        dispatch(fetchMovieList(searchQuery, String(desiredPageNumber), successfulChangePageRedirection(desiredPageNumber)));
+      }
+    }
+  };
+
+  const handleButtonGoClick = () => {
+    if (desiredPageNumber < 1 || desiredPageNumber > totalPage) {
+      setIsWarningVisible(true)
+    } else {
+      // @ts-ignore
+      dispatch(fetchMovieList(searchQuery, String(desiredPageNumber), successfulChangePageRedirection(desiredPageNumber)));
+    }
+  };
+
   return (
     <MovieListPage query={query}
                    searchQuery={searchQuery}
@@ -82,11 +107,15 @@ const MovieListPageContainer: React.FC<MovieListPageContainerProps> = (props: Mo
                    currentPage={currentPage}
                    totalPage={totalPage}
                    isFetchingMovieList={isFetchingMovieList}
+                   desiredPageNumber={desiredPageNumber}
+                   isWarningVisible={isWarningVisible}
                    handleSearchInputChange={handleSearchInputChange}
                    handleEnterKeyDown={handleEnterKeyDownProps}
-                   handleButtonSearchClick={handleButtonSearchClick}
                    handleDetailButtonClick={handleDetailButtonClick}
                    handlePageChange={handlePageChange}
+                   handlePageNumberInputChange={handlePageNumberInputChange}
+                   handlePageNumberEnterKeyDown={handlePageNumberEnterKeyDown}
+                   handleButtonGoClick={handleButtonGoClick}
     />
   )
 };

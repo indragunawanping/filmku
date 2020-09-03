@@ -44,7 +44,7 @@ const updateCurrentMovieDetail = (movieDetail: MovieDetail) => {
   }
 };
 
-export const fetchMovieList = (query: string, page: string, successfulRedirection?: () => void) => {
+export const fetchMovieList = (query: string,  page: string, successfulRedirection?: () => void, year?: number) => {
   return (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     const REACT_APP_APPLICATION_MOVIE_LIST_URL = "?apikey=".concat(API_KEY).concat("&s=").concat(query).concat("&page=").concat(page);
     const url = REACT_APP_APPLICATION_BASE_URL + REACT_APP_APPLICATION_MOVIE_LIST_URL;
