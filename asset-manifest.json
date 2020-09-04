@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/filmku/static/css/main.88856fca.chunk.css",
+    "main.css": "/filmku/static/css/main.3f3ab539.chunk.css",
     "main.js": "/filmku/static/js/main.a07f6288.chunk.js",
     "main.js.map": "/filmku/static/js/main.a07f6288.chunk.js.map",
     "runtime-main.js": "/filmku/static/js/runtime-main.c2c3e25c.js",
@@ -8,9 +8,9 @@
     "static/js/2.88640793.chunk.js": "/filmku/static/js/2.88640793.chunk.js",
     "static/js/2.88640793.chunk.js.map": "/filmku/static/js/2.88640793.chunk.js.map",
     "index.html": "/filmku/index.html",
-    "precache-manifest.4de56b171f10c4ec822a6acb07b2f27a.js": "/filmku/precache-manifest.4de56b171f10c4ec822a6acb07b2f27a.js",
+    "precache-manifest.8764228109e851d4178538af3e4c8beb.js": "/filmku/precache-manifest.8764228109e851d4178538af3e4c8beb.js",
     "service-worker.js": "/filmku/service-worker.js",
-    "static/css/main.88856fca.chunk.css.map": "/filmku/static/css/main.88856fca.chunk.css.map",
+    "static/css/main.3f3ab539.chunk.css.map": "/filmku/static/css/main.3f3ab539.chunk.css.map",
     "static/js/2.88640793.chunk.js.LICENSE.txt": "/filmku/static/js/2.88640793.chunk.js.LICENSE.txt",
     "static/media/logo-20-IMDb.webp": "/filmku/static/media/logo-20-IMDb.2da34bd4.webp",
     "static/media/logo-512-filmku.png": "/filmku/static/media/logo-512-filmku.db0f53dc.png",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.c2c3e25c.js",
     "static/js/2.88640793.chunk.js",
-    "static/css/main.88856fca.chunk.css",
+    "static/css/main.3f3ab539.chunk.css",
     "static/js/main.a07f6288.chunk.js"
   ]
 }
