@@ -9,7 +9,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 16vh - 50px);
+    height: 50vh;
 }
 
 .Title {
@@ -78,11 +78,11 @@
 }
 
 .DetailButton {
-    max-width: 100%;
+    width: 100%;
     font-size: 1.2vw;
     background-color: #080E2C;
     color: #ECF4E1;
-    padding: 10px 60px;
+    padding: 10px 0;
     border-radius: 5px;
     margin: 10px 0;
     cursor: pointer;
@@ -123,4 +123,34 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+@media only screen and (max-width: 1024px) {
+    .MovieTitle {
+        height: 7vh;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .Title{
+        font-size: 25px;
+    }
+
+    .MovieTitle {
+        height: 7vh;
+    }
+
+    .MovieContentContainer {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0;
+        width: 30%;
+        text-align: center;
+        box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+        border-radius: 5px;
+        flex-wrap: wrap
+    }
 }

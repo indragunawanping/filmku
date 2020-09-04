@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 16vh - 50px);
+    height: 50vh;
 }
 
 .TitleLine {
@@ -82,3 +82,28 @@
 .MiniImage {
     margin-right: 5px;
 }
+
+@media only screen and (max-width: 768px) {
+    .Title{
+        font-size: 25px;
+    }
+
+    .MovieTitle {
+        height: 7vh;
+    }
+
+    .MovieContentContainer {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0;
+        width: 30%;
+        text-align: center;
+        box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+        border-radius: 5px;
+        flex-wrap: wrap
+    }
+}
+
