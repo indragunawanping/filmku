@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/indragunawanping.github.io/film/static/css/main.93aec7aa.chunk.css",
+    "main.js": "/indragunawanping.github.io/film/static/js/main.f85b678c.chunk.js",
+    "main.js.map": "/indragunawanping.github.io/film/static/js/main.f85b678c.chunk.js.map",
+    "runtime-main.js": "/indragunawanping.github.io/film/static/js/runtime-main.1ef250ad.js",
+    "runtime-main.js.map": "/indragunawanping.github.io/film/static/js/runtime-main.1ef250ad.js.map",
+    "static/js/2.13560317.chunk.js": "/indragunawanping.github.io/film/static/js/2.13560317.chunk.js",
+    "static/js/2.13560317.chunk.js.map": "/indragunawanping.github.io/film/static/js/2.13560317.chunk.js.map",
+    "index.html": "/indragunawanping.github.io/film/index.html",
+    "precache-manifest.aa435b7875e8a3934cb292fd72be9cbb.js": "/indragunawanping.github.io/film/precache-manifest.aa435b7875e8a3934cb292fd72be9cbb.js",
+    "service-worker.js": "/indragunawanping.github.io/film/service-worker.js",
+    "static/css/main.93aec7aa.chunk.css.map": "/indragunawanping.github.io/film/static/css/main.93aec7aa.chunk.css.map",
+    "static/js/2.13560317.chunk.js.LICENSE.txt": "/indragunawanping.github.io/film/static/js/2.13560317.chunk.js.LICENSE.txt",
+    "static/media/logo-20-IMDb.webp": "/indragunawanping.github.io/film/static/media/logo-20-IMDb.2da34bd4.webp",
+    "static/media/logo-512-filmku.png": "/indragunawanping.github.io/film/static/media/logo-512-filmku.db0f53dc.png",
+    "static/media/poster-not-available.webp": "/indragunawanping.github.io/film/static/media/poster-not-available.d3938149.webp"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1ef250ad.js",
+    "static/js/2.13560317.chunk.js",
+    "static/css/main.93aec7aa.chunk.css",
+    "static/js/main.f85b678c.chunk.js"
+  ]
+}
