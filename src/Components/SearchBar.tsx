@@ -22,14 +22,6 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
       <img src={logo} alt="logo-filmku" className={styles.Logo} onClick={props.handleLogoClick}/>
       <Input fluid className={styles.InputSearch} type='text' placeholder='Search movie...' action>
         <input onChange={props.handleSearchInputChange} onKeyDown={props.handleEnterKeyDown} value={props.query}/>
-        {/*<Select fluid*/}
-        {/*        clearable*/}
-        {/*        options={props.yearRange}*/}
-        {/*        defaultValue='articles'*/}
-        {/*        placeholder='Pick Year'*/}
-        {/*        className={styles.SelectYear}*/}
-        {/*        onChange={props.handleYearPickChange}*/}
-        {/*/>*/}
         <Button type='submit' icon onClick={props.handleButtonSearchClick}><Icon name='search'/></Button>
       </Input>
     </div>

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import MovieDetailPage from "../Components/MovieDetailPage";
 import { MovieDetail, State } from "../state";
 import { connect, useDispatch } from "react-redux";
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps, useHistory } from "react-router";
 import { fetchMovieDetail } from "../actionsMovie";
 
 interface MovieDetailPageContainerProps extends RouteComponentProps<any> {
@@ -19,6 +19,7 @@ const mapStateToProps = (state: State) => {
 
 const MovieDetailPageContainer: React.FC<MovieDetailPageContainerProps> = (props: MovieDetailPageContainerProps) => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const currentMovieDetail = props.currentMovieDetail;
   const isFetchingMovieDetail = props.isFetchingMovieDetail;
@@ -30,9 +31,14 @@ const MovieDetailPageContainer: React.FC<MovieDetailPageContainerProps> = (props
     dispatch(fetchMovieDetail(imdbId));
   }, [dispatch, imdbId]);
 
+  const handleButtonBackClick = () => {
+    history.goBack();
+  };
+
   return (
     <MovieDetailPage currentMovieDetail={currentMovieDetail}
                      isFetchingMovieDetail={isFetchingMovieDetail}
+                     handleButtonBackClick={handleButtonBackClick}
     />
   )
 };

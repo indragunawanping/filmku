@@ -2,7 +2,7 @@ import React, { FormEvent } from 'react';
 import styles from './MovieListPage.module.css';
 import { Movie } from "../state";
 import posterNotAvailable from '../Assets/poster-not-available.webp';
-import { Grid, Input, Loader, Pagination } from "semantic-ui-react";
+import { Grid, Input, Loader } from "semantic-ui-react";
 import SearchBarContainer from "../Containers/SearchBarContainer";
 import Button from "semantic-ui-react/dist/commonjs/elements/Button";
 
@@ -18,13 +18,15 @@ interface MovieListPageProps {
   handleSearchInputChange: (event: FormEvent<HTMLInputElement>) => void;
   handleEnterKeyDown: any;
   handleDetailButtonClick: (imdbId: string) => void;
-  handlePageChange: (event: React.MouseEvent<HTMLAnchorElement>, data: object) => void;
+  handlePageChange: (pageNumber:  number) => void;
   handlePageNumberInputChange: (event: FormEvent<HTMLInputElement>) => void;
   handlePageNumberEnterKeyDown: any;
-  handleButtonGoClick: () => void;
 }
 
 const MovieListPage: React.FC<MovieListPageProps> = (props: MovieListPageProps) => {
+  const totalPage = props.totalPage;
+  const currentPage = props.currentPage;
+
   const renderMovieLabel = (movieType: string) => {
     let customColor: string;
 
@@ -91,23 +93,23 @@ const MovieListPage: React.FC<MovieListPageProps> = (props: MovieListPageProps) 
                 {renderMovieList()}
               </Grid.Row>
             </Grid>
-            <Input className={styles.InputSearch} type='text' placeholder='Page number...' action>
-              <input type="number" min="1"
-                     onChange={props.handlePageNumberInputChange}
-                     onKeyDown={props.handlePageNumberEnterKeyDown}
-                     value={props.desiredPageNumber}
-              />
-              <Button type='submit' icon onClick={props.handleButtonGoClick}>Go</Button>
-            </Input>
-            <span className={styles.Warning} style={{ visibility: props.isWarningVisible ? "visible" : "hidden" }}>Please input page number in range only.</span>
-            <div className={styles.Pagination}>
-              <Pagination pointing
-                          secondary
-                          activePage={props.currentPage}
-                          totalPages={props.totalPage}
-                          onPageChange={props.handlePageChange}
-              />
+            <span>Page {currentPage} of {totalPage}</span>
+            <div className={styles.PaginationGroup}>
+              <Button icon='angle double left' onClick={() => props.handlePageChange(1)}/>
+              <Button icon='angle left' onClick={() => props.handlePageChange(currentPage-1)}/>
+              <Input className={styles.InputSearch} type='text'>
+                <input type="number"
+                       min="1"
+                       onChange={props.handlePageNumberInputChange}
+                       onKeyDown={props.handlePageNumberEnterKeyDown}
+                       value={props.desiredPageNumber}
+                       className={styles.InputPage}
+                />
+              </Input>
+              <Button icon='angle right' onClick={() => props.handlePageChange(currentPage+1)}/>
+              <Button icon='angle double right' onClick={() => props.handlePageChange(totalPage)}/>
             </div>
+            <span className={styles.Warning} style={{ visibility: props.isWarningVisible ? "visible" : "hidden" }}>Please input page number in range only.</span>
           </>
       }
     </div>

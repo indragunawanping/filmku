@@ -44,11 +44,10 @@ const updateCurrentMovieDetail = (movieDetail: MovieDetail) => {
   }
 };
 
-export const fetchMovieList = (query: string,  page: string, successfulRedirection?: () => void, year?: number) => {
+export const fetchMovieList = (query: string, page: string, successfulRedirection?: () => void) => {
   return (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     const REACT_APP_APPLICATION_MOVIE_LIST_URL = "?apikey=".concat(API_KEY).concat("&s=").concat(query).concat("&page=").concat(page);
     const url = REACT_APP_APPLICATION_BASE_URL + REACT_APP_APPLICATION_MOVIE_LIST_URL;
-    console.log('url: ', url);
     const newCallId = uuid.v4();
     const httpCall: HttpCall = {
       id: newCallId,
@@ -65,7 +64,6 @@ export const fetchMovieList = (query: string,  page: string, successfulRedirecti
       if (response.body) {
         response.json()
           .then((data) => {
-            console.log('data: ', data.Error);
             if (data.Response === 'True') {
               dispatch(updateHttpCallStatus(newCallId, HttpCallStatus.SUCCESSFUL));
               dispatch(updateCurrentTotalResults(data.totalResults));
@@ -135,7 +133,6 @@ export const fetchMovieDetail = (imdbId: string, successfulRedirection?: () => v
         response.json()
           .then((data) => {
             dispatch(updateHttpCallStatus(newCallId, HttpCallStatus.SUCCESSFUL));
-            console.log('data: ', data);
             dispatch(updateCurrentMovieDetail(formatMovieDetail(data)));
             dispatch(updateFetchingMovieDetailStatus(false));
             if (successfulRedirection) successfulRedirection();

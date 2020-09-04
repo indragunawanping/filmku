@@ -40,12 +40,11 @@
 }
 
 .PosterContainer {
-    height: 22vw;
+    height: 100%;
 }
 
 .Poster {
     width: 100%;
-    max-height: 90%;
     object-position: -20% 0;
     object-fit: cover !important;
 }
@@ -79,7 +78,6 @@
 
 .DetailButton {
     width: 100%;
-    font-size: 1.2vw;
     background-color: #080E2C;
     color: #ECF4E1;
     padding: 10px 0;
@@ -99,17 +97,24 @@
     background-color: #44D6E9;
 }
 
-.Pagination {
-    margin-top: 20px;
-    margin-bottom: 50px;
+
+.PaginationGroup {
+    margin-top: 50px;
+    margin-bottom: 10px;
 }
 
 .InputSearch {
-    margin-top: 30px;
+    margin-right: 3.5px;
+    width: 55px;
+}
+
+.InputPage {
+    text-align: center !important;
 }
 
 .Warning {
     margin-top: 10px;
+    margin-bottom: 30px;
     color: red;
 }
 
@@ -132,7 +137,7 @@ input[type=number] {
 }
 
 @media only screen and (max-width: 768px) {
-    .Title{
+    .Title {
         font-size: 25px;
     }
 
@@ -141,16 +146,24 @@ input[type=number] {
     }
 
     .MovieContentContainer {
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        margin: 20px 0;
         width: 30%;
-        text-align: center;
-        box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-        border-radius: 5px;
-        flex-wrap: wrap
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .Title {
+        font-size: 20px;
+    }
+
+    .MovieTitle {
+        height: 6vh;
+    }
+
+    .DetailButton {
+        font-size: 12px;
+    }
+
+    .MovieContentContainer {
+        width: 45%;
     }
 }

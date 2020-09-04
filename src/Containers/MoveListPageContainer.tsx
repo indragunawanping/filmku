@@ -1,4 +1,4 @@
-import React, { FormEvent, SyntheticEvent, useCallback, useEffect, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import MovieListPage from "../Components/MovieListPage";
 import { Movie, State } from "../state";
 import { connect, useDispatch } from "react-redux";
@@ -71,9 +71,14 @@ const MovieListPageContainer: React.FC<MovieListPageContainerProps> = (props: Mo
     dispatch(fetchMovieDetail(imdbId, successfulRedirection))
   };
 
-  const handlePageChange = (event: React.MouseEvent<HTMLAnchorElement>, data: object) => {
-    // @ts-ignore
-    dispatch(fetchMovieList(searchQuery, String(data.activePage), successfulChangePageRedirection(data.activePage)));
+  const handlePageChange = (pageNumber: number) => {
+    if (pageNumber < 1 || pageNumber > totalPage) {
+      setIsWarningVisible(true)
+    } else {
+      // @ts-ignore
+      dispatch(fetchMovieList(searchQuery, String(pageNumber), successfulChangePageRedirection(pageNumber)));
+      setIsWarningVisible(false);
+    }
   };
 
   const handlePageNumberInputChange = (event: FormEvent<HTMLInputElement>) => {
@@ -87,16 +92,8 @@ const MovieListPageContainer: React.FC<MovieListPageContainerProps> = (props: Mo
       } else {
         // @ts-ignore
         dispatch(fetchMovieList(searchQuery, String(desiredPageNumber), successfulChangePageRedirection(desiredPageNumber)));
+        setIsWarningVisible(false);
       }
-    }
-  };
-
-  const handleButtonGoClick = () => {
-    if (desiredPageNumber < 1 || desiredPageNumber > totalPage) {
-      setIsWarningVisible(true)
-    } else {
-      // @ts-ignore
-      dispatch(fetchMovieList(searchQuery, String(desiredPageNumber), successfulChangePageRedirection(desiredPageNumber)));
     }
   };
 
@@ -115,7 +112,6 @@ const MovieListPageContainer: React.FC<MovieListPageContainerProps> = (props: Mo
                    handlePageChange={handlePageChange}
                    handlePageNumberInputChange={handlePageNumberInputChange}
                    handlePageNumberEnterKeyDown={handlePageNumberEnterKeyDown}
-                   handleButtonGoClick={handleButtonGoClick}
     />
   )
 };

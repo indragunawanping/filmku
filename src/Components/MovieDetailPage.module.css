@@ -8,6 +8,7 @@
 
 .TitleLine {
     display: flex;
+    align-items: center;
     margin-bottom: 30px;
 }
 
@@ -26,30 +27,31 @@
     font-weight: 500;
 }
 
-.Imdb {
-    color: black;
-    font-size: 11px;
-    padding: 1px 5px;
-    border-radius: 5px;
-    font-weight: 700 !important;
-    background-color: #EEC100;
-}
-
-.MovieDetailContentContainer {
-    display: grid;
-    grid-template-columns: 30% auto;
+.MovieDetailContentContainerColumn {
+    display: flex;
+    flex-direction: column;
     padding: 30px;
     margin: 50px 0;
     text-align: center;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
     border-radius: 5px;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+}
+
+.MovieDetailContentContainerRow {
+    display: grid;
+    grid-template-columns: 30% auto;
 }
 
 .MovieDetailContainer {
     margin: 0 5vw;
 }
 
+.Poster {
+    width: 100%;
+}
+
 .MovieDetailContent {
+    margin-left: 10%;
 }
 
 .PlotContainer {
@@ -77,33 +79,75 @@
     text-align: left;
     display: flex;
     align-items: flex-start;
+    flex-direction: column;
+}
+
+.Ratings {
+    display: flex;
+    flex-direction: row;
+}
+
+.Source{
+    margin-right: 3px;
 }
 
 .MiniImage {
     margin-right: 5px;
 }
 
-@media only screen and (max-width: 768px) {
-    .Title{
-        font-size: 25px;
-    }
+.ButtonBack {
+    background-color: crimson;
+    color: #ECF4E1;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 30px;
+    cursor: pointer;
+    border: none;
+    transition-duration: 0.2s;
+    font-weight: 300;
+}
 
-    .MovieTitle {
-        height: 7vh;
-    }
+.ButtonBack:active {
+    outline: none;
+}
 
-    .MovieContentContainer {
-        padding: 20px;
-        display: flex;
-        justify-content: center;
+.ButtonBack:hover {
+    background-color: #44D6E9;
+}
+
+
+@media only screen and (max-width: 500px) {
+    .TitleLine {
         flex-direction: column;
         align-items: center;
-        margin: 20px 0;
-        width: 30%;
+        line-height: normal;
+    }
+
+    .Title {
+        font-size: 20px;
+        margin: 10px 0;
         text-align: center;
-        box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+    }
+
+    .MovieDetailContent {
+        margin-left: 0;
+    }
+
+    .MovieDetailContentContainerRow {
+        display: flex;
+        flex-direction: column;
         border-radius: 5px;
-        flex-wrap: wrap
+        font-size: 10px;
+        line-height: 1.2;
+    }
+
+    .ButtonBack {
+        font-size: 10px;
+        padding: 7px 15px;
+    }
+
+    .MiniImage {
+        height: 10px;
     }
 }
 
