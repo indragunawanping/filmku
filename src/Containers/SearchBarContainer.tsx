@@ -38,17 +38,12 @@ const SearchBarContainer = () => {
 
   const handleEnterKeyDown = (event: any) => {
     if (event.key === 'Enter') {
-      dispatch(fetchMovieList(query, String(1), successfulRedirection, year));
+      dispatch(fetchMovieList(query, String(1), successfulRedirection));
     }
   };
 
   const handleButtonSearchClick = () => {
-    dispatch(fetchMovieList(query, String(1), successfulRedirection, year));
-  };
-
-  const handleYearPickChange = (event: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => {
-    const year = String(data.value);
-    setYear(Number(year));
+    dispatch(fetchMovieList(query, String(1), successfulRedirection));
   };
 
   return (
@@ -58,7 +53,6 @@ const SearchBarContainer = () => {
                handleSearchInputChange={handleSearchInputChange}
                handleEnterKeyDown={handleEnterKeyDown}
                handleButtonSearchClick={handleButtonSearchClick}
-               handleYearPickChange={handleYearPickChange}
     />
   )
 };

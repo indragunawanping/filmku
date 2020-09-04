@@ -12,7 +12,6 @@ interface SearchBarProps {
   handleSearchInputChange: (event: FormEvent<HTMLInputElement>) => void;
   handleEnterKeyDown: any;
   handleButtonSearchClick: () => void;
-  handleYearPickChange: (event: React.SyntheticEvent<HTMLElement>, data: DropdownProps) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
