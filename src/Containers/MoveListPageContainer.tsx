@@ -41,7 +41,7 @@ const MovieListPageContainer: React.FC<MovieListPageContainerProps> = (props: Mo
     setCurrentPage(currentPage);
     setDesiredPageNumber(currentPage);
     setIsWarningVisible(false);
-  }, [dispatch, searchQuery, pageNumber]);
+  }, [dispatch, searchQuery, pageNumber, currentPage]);
 
   const successfulRedirection = () => {
     history.push('/movie-list/'.concat(query).concat('/').concat(String(currentPage)));

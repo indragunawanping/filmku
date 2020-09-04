@@ -1,6 +1,6 @@
 import React, { FormEvent } from 'react';
 import logo from "../Assets/logo-512-filmku.png";
-import { DropdownProps, Input } from "semantic-ui-react";
+import { Input } from "semantic-ui-react";
 import Button from "semantic-ui-react/dist/commonjs/elements/Button";
 import Icon from "semantic-ui-react/dist/commonjs/elements/Icon";
 import styles from './SearchBar.module.css';

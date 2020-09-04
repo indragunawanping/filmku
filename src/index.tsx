@@ -31,7 +31,7 @@ const store = createStore(reducers, middleware);
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename="/filmku">
       <App />
     </BrowserRouter>
   </Provider>,

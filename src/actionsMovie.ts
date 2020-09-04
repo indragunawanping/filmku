@@ -2,7 +2,7 @@ import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
 import { ErrorModalProps, HttpCall, HttpCallMethod, HttpCallStatus, Movie, MovieDetail } from "./state";
 import { addNewHttpCall, sendHttpRequest, updateHttpCallStatus } from "./actionsHttp";
-import { API_KEY, REACT_APP_APPLICATION_BASE_URL } from "./config";
+import { REACT_APP_API_KEY, REACT_APP_APPLICATION_BASE_URL } from "./config";
 import * as uuid from "uuid";
 import { updateErrorModalStatus } from "./actions";
 import { extractMovieList, formatMovieDetail } from './responseUtil';
@@ -46,7 +46,7 @@ const updateCurrentMovieDetail = (movieDetail: MovieDetail) => {
 
 export const fetchMovieList = (query: string, page: string, successfulRedirection?: () => void) => {
   return (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
-    const REACT_APP_APPLICATION_MOVIE_LIST_URL = "?apikey=".concat(API_KEY).concat("&s=").concat(query).concat("&page=").concat(page);
+    const REACT_APP_APPLICATION_MOVIE_LIST_URL = "?apikey=".concat(REACT_APP_API_KEY? REACT_APP_API_KEY : '').concat("&s=").concat(query).concat("&page=").concat(page);
     const url = REACT_APP_APPLICATION_BASE_URL + REACT_APP_APPLICATION_MOVIE_LIST_URL;
     const newCallId = uuid.v4();
     const httpCall: HttpCall = {
@@ -114,7 +114,7 @@ export const fetchMovieList = (query: string, page: string, successfulRedirectio
 
 export const fetchMovieDetail = (imdbId: string, successfulRedirection?: () => void) => {
   return (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
-    const REACT_APP_APPLICATION_MOVIE_DETAIL_URL = "?i=".concat(imdbId).concat("&plot=full").concat("&apikey=").concat(API_KEY);
+    const REACT_APP_APPLICATION_MOVIE_DETAIL_URL = "?i=".concat(imdbId).concat("&plot=full").concat("&apikey=").concat(REACT_APP_API_KEY? REACT_APP_API_KEY : '');
     const url = REACT_APP_APPLICATION_BASE_URL + REACT_APP_APPLICATION_MOVIE_DETAIL_URL;
     const newCallId = uuid.v4();
     const httpCall: HttpCall = {

@@ -3,14 +3,12 @@ import SearchBar from "../Components/SearchBar";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { fetchMovieList } from "../actionsMovie";
-import { DropdownProps } from "semantic-ui-react";
 
 const SearchBarContainer = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [query, setQuery] = useState("");
-  const [year, setYear] = useState<number | undefined>(undefined);
 
   let yearRange: any[] = [];
 
